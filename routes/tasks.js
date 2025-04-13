@@ -8,7 +8,7 @@ router.post("/", auth, async (req, res) => {
   try {
     const task = new Task({ ...req.body, userId: req.user._id });
     await task.save();
-    res.status(201).json(task);
+    res.status(200).json(task);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

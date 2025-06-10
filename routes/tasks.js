@@ -49,4 +49,12 @@ router.delete("/:id", auth, async (req, res) => {
   res.json({ message: "Task deleted" });
 });
 
+router.delete("/", auth , async(req, res) => {
+  try {
+    await Task.deleteMany({});
+    return res.status(200).json({message: 'All task Cleared'});
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+})
 module.exports = router;

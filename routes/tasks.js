@@ -51,7 +51,7 @@ router.delete("/:id", auth, async (req, res) => {
 
 router.delete("/", auth , async(req, res) => {
   try {
-    await Task.deleteMany({});
+    await Task.deleteMany({userId: req.user._id});
     return res.status(200).json({message: 'All task Cleared'});
   } catch (err) {
     return res.status(400).json({ error: err.message });
